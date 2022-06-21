@@ -4,15 +4,14 @@ import {quizedata} from '../../data/data';
 
 const QuestionDisplay = ({currentQuestion, toNext}) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
-  const [currentQuestionData, setCurrentQuestionData] =
-    useState(currentQuestion);
+  const [currentQuestionData, setCurrentQuestionData] = useState({});
   useEffect(() => {
     setCurrentQuestionData(currentQuestion);
   }, [currentQuestion]);
   const onSelectAnswer = (item, index) => {
     // console.log(item, index);
 
-    if (item.optionText == currentQuestionData.correct) {
+    if (item.optionText == currentQuestionData?.correct) {
       toNext();
       console.log('next triggered');
     } else {
@@ -34,9 +33,9 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
   }
   return (
     <View>
-      <Text>{currentQuestionData.question}</Text>
+      <Text>{currentQuestionData?.question}</Text>
       <View style={{alignItems: 'center'}}>
-        {currentQuestionData.options.map((item, index) => {
+        {currentQuestionData?.options?.map((item, index) => {
           return (
             <View style={{flexDirection: 'row'}} key={item.optionOrder}>
               <Text>{item.optionOrder}</Text>

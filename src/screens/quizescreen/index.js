@@ -4,7 +4,7 @@ import {quizedata} from '../../data/data';
 import QuestionDisplay from './questionDisplay';
 const QuizeScreen = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [quize, setQuize] = useState(quizedata[currentQuestion]);
+  const [quize, setQuize] = useState({});
   useEffect(() => {
     setQuize(quizedata[currentQuestion]);
     console.log(currentQuestion, quizedata.length);
@@ -18,6 +18,8 @@ const QuizeScreen = () => {
       setCurrentQuestion(currentQuestion + 1);
       //   setQuize(quizedata[currentQuestion]);
     } else {
+      setCurrentQuestion(0);
+      setQuize(quizedata[currentQuestion]);
     }
   };
   return (
