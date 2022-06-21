@@ -19,23 +19,25 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
     }
   };
   useEffect(() => {
-    toNextQuestion();
+    const timer = setTimeout(() => {
+      toNext();
+    }, 3000);
     return () => {
       console.log('cleanuo');
-      clearTimeout(toNextQuestion());
+      clearTimeout(timer);
     };
   }, [toNext]);
   function toNextQuestion() {
     console.log('started');
     setTimeout(() => {
       toNext();
-    }, 30000);
+    }, 3000);
   }
   return (
     <View>
-      <Text>{currentQuestionData?.question}</Text>
+      <Text>{currentQuestion?.question}</Text>
       <View style={{alignItems: 'center'}}>
-        {currentQuestionData?.options?.map((item, index) => {
+        {currentQuestion?.options?.map((item, index) => {
           return (
             <View style={{flexDirection: 'row'}} key={item.optionOrder}>
               <Text>{item.optionOrder}</Text>
