@@ -4,13 +4,12 @@ import {quizedata} from '../../data/data';
 import QuestionDisplay from './questionDisplay';
 const QuizeScreen = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  // const [quize, setQuize] = useState(quizedata);
-
+  const [timers, setTimer] = useState(0);
   const toNext = () => {
-    // console.log(currentQuestion, quizedata.length);
     if (currentQuestion < quizedata.length - 1) {
       console.log('in to next', currentQuestion);
       setCurrentQuestion(currentQuestion + 1);
+      setTimer(0);
     } else {
       setCurrentQuestion(0);
       console.log('out');
@@ -21,7 +20,18 @@ const QuizeScreen = () => {
   //   setTimeout(() => {
   //     toNext();
   //   }, 3000);
-  // }
+  useEffect(() => {
+    if (timers == 30) {
+      // toNext();
+    }
+    const timer = setTimeout(() => {
+      setTimer(prev => prev + 1);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [toNext]);
+
   return (
     <View>
       <View>
@@ -34,7 +44,7 @@ const QuizeScreen = () => {
           paddingTop: 20,
         }}>
         <Text>Question {currentQuestion + 1}/10</Text>
-        <Text style={{color: 'red'}}>Time Left -0:30</Text>
+        <Text style={{color: 'red'}}>Time Left 0:{timers}</Text>
       </View>
 
       <QuestionDisplay

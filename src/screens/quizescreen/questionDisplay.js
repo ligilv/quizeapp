@@ -7,26 +7,29 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
   const [currentQuestionData, setCurrentQuestionData] = useState({});
   useEffect(() => {
     setCurrentQuestionData(currentQuestion);
+    console.log(currentQuestion);
   }, [currentQuestion]);
   const onSelectAnswer = (item, index) => {
-    // console.log(item, index);
-
     if (item.optionText == currentQuestionData?.correct) {
       toNext();
       console.log('next triggered');
     } else {
+      // console.log(currentQuestion);
+      // currentQuestionData.options.map((item)=>(
+
+      // ))
       console.log('wrong');
     }
   };
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      toNext();
-    }, 3000);
-    return () => {
-      console.log('cleanuo');
-      clearTimeout(timer);
-    };
-  }, [toNext]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     toNext();
+  //   }, 3000);
+  //   return () => {
+  //     // console.log('cleanuo');
+  //     clearTimeout(timer);
+  //   };
+  // }, [toNext]);
   function toNextQuestion() {
     console.log('started');
     setTimeout(() => {
@@ -35,9 +38,9 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
   }
   return (
     <View>
-      <Text>{currentQuestion?.question}</Text>
+      <Text>{currentQuestionData?.question}</Text>
       <View style={{alignItems: 'center'}}>
-        {currentQuestion?.options?.map((item, index) => {
+        {currentQuestionData?.options?.map((item, index) => {
           return (
             <View style={{flexDirection: 'row'}} key={item.optionOrder}>
               <Text>{item.optionOrder}</Text>

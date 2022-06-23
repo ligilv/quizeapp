@@ -16,12 +16,15 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import FetchData from './src/screens/FetchData';
 import QuizeScreen from './src/screens/quizescreen';
 
 const App = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
+      {/* <FetchData /> */}
       <QuizeScreen />
+      {/* <TestFetch /> */}
     </SafeAreaView>
   );
 };
