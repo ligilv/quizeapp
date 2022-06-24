@@ -5,36 +5,55 @@ import {quizedata} from '../../data/data';
 const QuestionDisplay = ({currentQuestion, toNext}) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [currentQuestionData, setCurrentQuestionData] = useState({});
+  const [answered, setAnswered] = useState(true);
   useEffect(() => {
     setCurrentQuestionData(currentQuestion);
     console.log(currentQuestion);
+    toNextQuestion();
   }, [currentQuestion]);
   const onSelectAnswer = (item, index) => {
+    setAnswered(false);
     if (item.optionText == currentQuestionData?.correct) {
-      toNext();
-      console.log('next triggered');
-    } else {
-      // console.log(currentQuestion);
-      // currentQuestionData.options.map((item)=>(
+      setAnswered(true);
 
-      // ))
-      console.log('wrong');
+      const newOptions = currentQuestion.options.map((item, i) => {
+        if (i == index) {
+          item.color = '#6CC4A1';
+        }
+      });
+      setCurrentQuestionData({
+        ...currentQuestion,
+        options: [...currentQuestion.options, newOptions],
+      });
+      setTimeout(() => {
+        setAnswered(true);
+
+        toNext();
+      }, 2000);
+    } else {
+      console.log(currentQuestion);
+      const newOptions = currentQuestion.options.map((item, i) => {
+        if (i == index) {
+          item.color = '#F94C66';
+        }
+      });
+      setCurrentQuestionData({
+        ...currentQuestion,
+        options: [...currentQuestion.options, newOptions],
+      });
+      setTimeout(() => {
+        setAnswered(true);
+
+        toNext();
+      }, 20000);
     }
   };
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     toNext();
-  //   }, 3000);
-  //   return () => {
-  //     // console.log('cleanuo');
-  //     clearTimeout(timer);
-  //   };
-  // }, [toNext]);
+
   function toNextQuestion() {
     console.log('started');
     setTimeout(() => {
       toNext();
-    }, 3000);
+    }, 30000);
   }
   return (
     <View>
@@ -45,7 +64,8 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
             <View style={{flexDirection: 'row'}} key={item.optionOrder}>
               <Text>{item.optionOrder}</Text>
               <TouchableOpacity
-                onPress={() => onSelectAnswer(item, index)}
+                key={item.optionOrder}
+                onPress={answered ? () => onSelectAnswer(item, index) : null}
                 style={{
                   backgroundColor: item.color,
                   width: '80%',
