@@ -1,14 +1,18 @@
-/**
- * @format
- */
-
-import 'react-native';
-import React from 'react';
-import App from '../App';
-
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
-it('renders correctly', () => {
-  renderer.create(<App />);
+test('two plus two is four', () => {
+  expect(2 + 2).toBe(4);
+});
+test('adding positive numbers is not zero', () => {
+  for (let a = 1; a < 10; a++) {
+    for (let b = 1; b < 10; b++) {
+      expect(a + b).not.toBe(0);
+    }
+  }
+});
+test('zero', () => {
+  const z = true;
+  expect(z).not.toBeNull();
+  expect(z).toBeDefined();
+  expect(z).not.toBeUndefined();
+  expect(z).toBeTruthy();
+  expect(z).not.toBeFalsy();
 });

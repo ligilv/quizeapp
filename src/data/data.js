@@ -5,28 +5,28 @@ export const quizedata = [
     correct: 'Ligil',
     options: [
       {optionOrder: 'a', optionText: 'Ligil', color: '#D3CEDF'},
-      {optionOrder: 'b', optionText: 'akjil', color: '#D3CEDF'},
+      {optionOrder: 'b', optionText: 'Akhil', color: '#D3CEDF'},
       {optionOrder: 'c', optionText: 'akon', color: '#D3CEDF'},
     ],
   },
   {
     order: 2,
-    question: 'what is my fav framewor',
-    correct: 'reactnative',
+    question: 'what is my fav framework',
+    correct: 'React Native',
     options: [
-      {optionOrder: 'a', optionText: 'reactnative', color: '#D3CEDF'},
-      {optionOrder: 'b', optionText: 'ionic', color: '#D3CEDF'},
-      {optionOrder: 'c', optionText: 'angular', color: '#D3CEDF'},
+      {optionOrder: 'a', optionText: 'React Native', color: '#D3CEDF'},
+      {optionOrder: 'b', optionText: 'IONIC', color: '#D3CEDF'},
+      {optionOrder: 'c', optionText: 'ANGULAR', color: '#D3CEDF'},
     ],
   },
   {
     order: 3,
-    question: 'what is my fav hook',
+    question: 'What is my fav hook',
     correct: 'usestate',
     options: [
-      {optionOrder: 'a', optionText: 'useffect', color: '#D3CEDF'},
-      {optionOrder: 'b', optionText: 'usestate', color: '#D3CEDF'},
-      {optionOrder: 'c', optionText: 'useref', color: '#D3CEDF'},
+      {optionOrder: 'a', optionText: 'useEffect', color: '#D3CEDF'},
+      {optionOrder: 'b', optionText: 'useState', color: '#D3CEDF'},
+      {optionOrder: 'c', optionText: 'useRef', color: '#D3CEDF'},
     ],
   },
 ];

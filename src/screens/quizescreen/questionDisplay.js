@@ -7,6 +7,9 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
   const [currentQuestionData, setCurrentQuestionData] = useState({});
   const [answered, setAnswered] = useState(true);
   useEffect(() => {
+    console.log('question screen rendering');
+  });
+  useEffect(() => {
     setCurrentQuestionData(currentQuestion);
     console.log(currentQuestion);
     toNextQuestion();
@@ -21,31 +24,33 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
           item.color = '#6CC4A1';
         }
       });
-      setCurrentQuestionData({
-        ...currentQuestion,
-        options: [...currentQuestion.options, newOptions],
-      });
+      setCurrentQuestionData(prev => ({
+        ...prev,
+        options: [...prev.options, newOptions],
+      }));
       setTimeout(() => {
         setAnswered(true);
 
         toNext();
       }, 2000);
     } else {
-      console.log(currentQuestion);
+      // console.log(currentQuestion);
       const newOptions = currentQuestion.options.map((item, i) => {
+        // console.log(item);
         if (i == index) {
           item.color = '#F94C66';
+          console.log(currentQuestion);
         }
       });
-      setCurrentQuestionData({
-        ...currentQuestion,
-        options: [...currentQuestion.options, newOptions],
-      });
+      setCurrentQuestionData(prev => ({
+        ...prev,
+        options: [...prev.options, newOptions],
+      }));
       setTimeout(() => {
         setAnswered(true);
 
         toNext();
-      }, 20000);
+      }, 2000);
     }
   };
 

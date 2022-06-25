@@ -1,29 +1,30 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import {quizedata} from '../../data/data';
 import QuestionDisplay from './questionDisplay';
 const QuizeScreen = () => {
+  // const quizeData = useMemo(() => quizedata, []);
+  useEffect(() => {
+    console.log('quizedata');
+  }, [quizedata]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [timers, setTimer] = useState(0);
-  const toNext = () => {
+  const toNext = useCallback(() => {
     if (currentQuestion < quizedata.length - 1) {
       console.log('in to next', currentQuestion);
       setCurrentQuestion(currentQuestion + 1);
       setTimer(0);
     } else {
-      setCurrentQuestion(0);
+      // setCurrentQuestion(0);
       console.log('out');
     }
-  };
-  // Timer();
+  });
   // function Timer() {
   //   setTimeout(() => {
   //     toNext();
   //   }, 3000);
+  // Timer();
   useEffect(() => {
-    if (timers == 30) {
-      // toNext();
-    }
     const timer = setTimeout(() => {
       setTimer(prev => prev + 1);
     }, 1000);
