@@ -22,7 +22,7 @@ export const quizedata = [
   {
     order: 3,
     question: 'What is my fav hook',
-    correct: 'usestate',
+    correct: 'useState',
     options: [
       {optionOrder: 'a', optionText: 'useEffect', color: '#D3CEDF'},
       {optionOrder: 'b', optionText: 'useState', color: '#D3CEDF'},
