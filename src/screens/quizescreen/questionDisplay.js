@@ -6,12 +6,10 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [currentQuestionData, setCurrentQuestionData] = useState({});
   const [answered, setAnswered] = useState(true);
-  useEffect(() => {
-    console.log('question screen rendering');
-  });
+
   useEffect(() => {
     setCurrentQuestionData(currentQuestion);
-    console.log(currentQuestion);
+    // console.log(currentQuestion);
     toNextQuestion();
   }, [currentQuestion]);
   const onSelectAnswer = (item, index) => {
@@ -32,7 +30,7 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
         setAnswered(true);
 
         toNext();
-      }, 2000);
+      }, 1000);
     } else {
       // console.log(currentQuestion);
       const newOptions = currentQuestion.options.map((item, i) => {
@@ -50,7 +48,7 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
         setAnswered(true);
 
         toNext();
-      }, 2000);
+      }, 1000);
     }
   };
 

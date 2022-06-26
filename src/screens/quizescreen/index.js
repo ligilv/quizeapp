@@ -7,12 +7,15 @@ const QuizeScreen = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [tStatus, setTstatus] = useState(true);
-  const [timers, setTimer] = useState(0);
+  const [timers, setTimer] = useState(11);
   const toNext = () => {
+    console.log('current', currentQuestion);
     if (currentQuestion < quizedata.length - 1) {
+      setTstatus(true);
       console.log('in to next', currentQuestion);
       setCurrentQuestion(currentQuestion + 1);
-      setTimer(0);
+      console.log('after', currentQuestion);
+      setTimer(11);
     } else {
       console.log('out');
       setTstatus(false);
@@ -20,18 +23,26 @@ const QuizeScreen = () => {
   };
 
   useEffect(() => {
+    console.log('timer running');
     let timer;
-    if (tStatus) {
-      timer = setTimeout(() => {
-        setTimer(prev => prev + 1);
-      }, 1000);
+
+    if (timers == 0) {
+      console.log('0 sec');
+      setTstatus(false);
+      toNext();
     } else {
-      clearTimeout(timer);
+      if (tStatus) {
+        timer = setInterval(() => {
+          setTimer(prev => prev - 1);
+        }, 1000);
+      } else {
+        clearInterval(timer);
+      }
     }
     return () => {
-      clearTimeout(timer);
+      clearInterval(timer);
     };
-  }, [toNext]);
+  });
 
   return (
     <View>
