@@ -42,10 +42,10 @@ const QuizeScreen = () => {
     return () => {
       clearInterval(timer);
     };
-  });
+  }, [toNext]);
 
   return (
-    <View>
+    <View style={{padding: 10, backgroundColor: '#C2DED1', flex: 1}}>
       <View>
         <Text style={{textAlign: 'center'}}>Quiz App</Text>
       </View>
@@ -55,8 +55,12 @@ const QuizeScreen = () => {
           justifyContent: 'space-between',
           paddingTop: 20,
         }}>
-        <Text>Question {currentQuestion + 1}/10</Text>
-        <Text style={{color: 'red'}}>Time: {timers}</Text>
+        <Text>
+          Question {currentQuestion + 1}/{quizedata.length}
+        </Text>
+        <Text style={{color: 'red', paddingHorizontal: 20}}>
+          Time: {timers}
+        </Text>
       </View>
 
       <QuestionDisplay

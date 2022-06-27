@@ -22,6 +22,8 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
           item.color = '#6CC4A1';
         }
       });
+
+      console.log('newoptions', newOptions);
       setCurrentQuestionData(prev => ({
         ...prev,
         options: [...prev.options, newOptions],
@@ -59,17 +61,21 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
     }, 30000);
   }
   return (
-    <View>
-      <Text>{currentQuestionData?.question}</Text>
+    <View style={{paddingTop: 20}}>
+      <Text>Q) {currentQuestionData?.question}</Text>
       <View style={{alignItems: 'center'}}>
         {currentQuestionData?.options?.map((item, index) => {
           return (
             <View style={{flexDirection: 'row'}} key={item.optionOrder}>
-              <Text>{item.optionOrder}</Text>
+              <View style={{justifyContent: 'center', padding: 10}}>
+                <Text style={{textAlign: 'center'}}>{item.optionOrder}</Text>
+              </View>
               <TouchableOpacity
                 key={item.optionOrder}
                 onPress={answered ? () => onSelectAnswer(item, index) : null}
                 style={{
+                  borderColor: 'black',
+                  borderWidth: 1,
                   backgroundColor: item.color,
                   width: '80%',
                   borderRadius: 10,
