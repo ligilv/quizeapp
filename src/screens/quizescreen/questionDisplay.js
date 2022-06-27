@@ -23,7 +23,7 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
           return {...item};
         }
       });
-      ß;
+
       console.log('newoptions', newOptions);
       setCurrentQuestionData(prev => ({
         ...prev,
