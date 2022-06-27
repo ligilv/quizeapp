@@ -9,7 +9,6 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
 
   useEffect(() => {
     setCurrentQuestionData(currentQuestion);
-    // console.log(currentQuestion);
     toNextQuestion();
   }, [currentQuestion]);
   const onSelectAnswer = (item, index) => {
@@ -19,14 +18,16 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
 
       const newOptions = currentQuestion.options.map((item, i) => {
         if (i == index) {
-          item.color = '#6CC4A1';
+          return {...item, color: '#6CC4A1'};
+        } else {
+          return {...item};
         }
       });
-
+      ß;
       console.log('newoptions', newOptions);
       setCurrentQuestionData(prev => ({
         ...prev,
-        options: [...prev.options, newOptions],
+        options: [...newOptions],
       }));
       setTimeout(() => {
         setAnswered(true);
@@ -34,17 +35,17 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
         toNext();
       }, 1000);
     } else {
-      // console.log(currentQuestion);
       const newOptions = currentQuestion.options.map((item, i) => {
-        // console.log(item);
         if (i == index) {
-          item.color = '#F94C66';
-          console.log(currentQuestion);
+          return {...item, color: '#F94C66'};
+        } else {
+          return {...item};
         }
       });
+      console.log('newoptions', newOptions);
       setCurrentQuestionData(prev => ({
         ...prev,
-        options: [...prev.options, newOptions],
+        options: [...newOptions],
       }));
       setTimeout(() => {
         setAnswered(true);

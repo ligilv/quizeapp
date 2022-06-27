@@ -22,27 +22,27 @@ const QuizeScreen = () => {
     }
   };
 
-  useEffect(() => {
-    console.log('timer running');
-    let timer;
+  // useEffect(() => {
+  //   console.log('timer running');
+  //   let timer;
 
-    if (timers == 0) {
-      console.log('0 sec');
-      setTstatus(false);
-      toNext();
-    } else {
-      if (tStatus) {
-        timer = setInterval(() => {
-          setTimer(prev => prev - 1);
-        }, 1000);
-      } else {
-        clearInterval(timer);
-      }
-    }
-    return () => {
-      clearInterval(timer);
-    };
-  }, [toNext]);
+  //   if (timers == 0) {
+  //     console.log('0 sec');
+  //     setTstatus(false);
+  //     toNext();
+  //   } else {
+  //     if (tStatus) {
+  //       timer = setInterval(() => {
+  //         setTimer(prev => prev - 1);
+  //       }, 1000);
+  //     } else {
+  //       clearInterval(timer);
+  //     }
+  //   }
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, [toNext]);
 
   return (
     <View style={{padding: 10, backgroundColor: '#C2DED1', flex: 1}}>
