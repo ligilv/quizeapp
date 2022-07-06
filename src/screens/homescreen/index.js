@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const HomeScreen = () => {
   return (
     <View>
-      <Text>What would you like to do?</Text>
       <Button title="Set Questions" />
       <Button title="Answer them" />
       <Icon.Button
@@ -13,6 +12,10 @@ const HomeScreen = () => {
         onPress={this.loginWithFacebook}>
         Login with Facebook
       </Icon.Button>
+      <Text style={{fontFamily: 'YatraOne-Regular', fontSize: 25}}>
+        What would you like to do?
+      </Text>
+      <Text style={{fontSize: 25}}>What would you like to do?</Text>
     </View>
   );
 };
