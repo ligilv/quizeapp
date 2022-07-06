@@ -9,7 +9,6 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
 
   useEffect(() => {
     setCurrentQuestionData(currentQuestion);
-    toNextQuestion();
   }, [currentQuestion]);
   const onSelectAnswer = (item, index) => {
     setAnswered(false);
@@ -55,12 +54,6 @@ const QuestionDisplay = ({currentQuestion, toNext}) => {
     }
   };
 
-  function toNextQuestion() {
-    console.log('started');
-    setTimeout(() => {
-      toNext();
-    }, 30000);
-  }
   return (
     <View style={{paddingTop: 20}}>
       <Text>Q) {currentQuestionData?.question}</Text>
