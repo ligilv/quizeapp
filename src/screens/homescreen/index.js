@@ -6,16 +6,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import {incrementCounter} from '../../redux/actions/counterAction';
 const HomeScreen = () => {
   // console.log(API_URL);
-  const dispatch = useDispatch();
   const state = useSelector(state => state);
-  console.log(state);
   return (
     <View>
       <Button title="Set Questions" />
-      <Button
-        title="Answer them"
-        onPress={() => dispatch(incrementCounter())}
-      />
+      <Button title="Answer them" />
       <Icon.Button
         name="facebook"
         backgroundColor="#3b5998"
@@ -24,6 +19,7 @@ const HomeScreen = () => {
       </Icon.Button>
       <Text style={{fontFamily: 'YatraOne-Regular', fontSize: 25}}>
         What would you like to do?
+        {state.counter.count}
       </Text>
 
       <Text style={{fontSize: 25}}>What would you like to do?</Text>
