@@ -6,6 +6,7 @@
  * @flow strict-local
  */
 
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {
   SafeAreaView,
@@ -16,18 +17,24 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import RootNavigation from './src/navigation';
 import FetchData from './src/screens/FetchData';
 import HomeScreen from './src/screens/homescreen';
 import QuizeScreen from './src/screens/quizescreen';
-
+import {store} from './src/redux/store';
+import {Provider} from 'react-redux';
 const App = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      {/* <FetchData /> */}
-      {/* <QuizeScreen /> */}
-      <HomeScreen />
-      {/* <TestFetch /> */}
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={{flex: 1}}>
+        {/* <FetchData /> */}
+        {/* <QuizeScreen /> */}
+        <NavigationContainer>
+          <RootNavigation />
+        </NavigationContainer>
+        {/* <TestFetch /> */}
+      </SafeAreaView>
+    </Provider>
   );
 };
 

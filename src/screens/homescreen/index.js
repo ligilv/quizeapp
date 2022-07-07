@@ -1,7 +1,12 @@
 import {Button, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {API_URL, API_TOKEN} from '@env';
+import {useSelector} from 'react-redux';
 const HomeScreen = () => {
+  // console.log(API_URL);
+  const state = useSelector(state => state);
+  console.log(state);
   return (
     <View>
       <Button title="Set Questions" />
