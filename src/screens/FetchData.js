@@ -21,8 +21,6 @@ const FetchData = () => {
         );
         setData(result.data);
         setFinal(result.data);
-
-        console.log(result.data);
       } catch (error) {
         console.log(error);
       }
@@ -31,35 +29,24 @@ const FetchData = () => {
     //namwe
     fetchData();
   }, []);
-  function searchName(v) {
-    console.log(v);
-    setSearchValue(v);
-    if (v == '') {
-      setData(final);
-    } else {
-      setData(data.filter(item => item.name.includes(v)));
-    }
-  }
-  function onNamePress(item) {
+  const onItemPress = item => {
     if (selectedName.includes(item.name)) {
-      console.log(selectedName.includes(item.name));
-      setSelectedName(selectedName.filter(i => i != item.name));
+      setSelectedName(selectedName.filter(x => x != item.name));
+
+      console.log(selectedName);
     } else {
-      setSelectedName(prev => [...prev, item.name]);
+      console.log(item.name);
+      setSelectedName([...selectedName, item.name]);
       console.log(selectedName);
     }
-  }
-  const TestFun = val => {
-    console.log(val);
   };
+  const searchName = item => {
+    console.log(item);
+    setSearchValue(item);
+  };
+
   return (
     <View style={{flex: 1}}>
-      <TextInput
-        placeholder="search"
-        onChangeText={searchName}
-        // onKeyPress={TestFun}
-        value={searchValue}
-      />
       <FlatList
         data={data}
         renderItem={({item}) => (
@@ -70,11 +57,17 @@ const FetchData = () => {
                 ? 'yellow'
                 : 'grey',
             }}
-            onPress={() => onNamePress(item)}>
+            onPress={() => onItemPress(item)}>
             <Text>{item.name}</Text>
             <Text>{item.email}</Text>
           </TouchableOpacity>
         )}
+      />
+      <TextInput
+        placeholder="search"
+        onChangeText={searchName}
+        // onKeyPress={TestFun}
+        value={searchValue}
       />
     </View>
   );

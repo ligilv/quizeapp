@@ -30,11 +30,9 @@ const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <SafeAreaView style={{flex: 1}}>
           {/* <FetchData /> */}
-          {/* <QuizeScreen /> */}
           <NavigationContainer>
             <RootNavigation />
           </NavigationContainer>
-          {/* <TestFetch /> */}
         </SafeAreaView>
       </PersistGate>
     </Provider>
