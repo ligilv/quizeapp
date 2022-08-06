@@ -28,7 +28,6 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 const App = () => {
   Sentry.init({
-    // dsn: 'https://1f0c79aed28444919b84f1ccb5b29ff3@o1341612.ingest.sentry.io/6618061',
     // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
     // We recommend adjusting this value in production.
     tracesSampleRate: 1.0,
