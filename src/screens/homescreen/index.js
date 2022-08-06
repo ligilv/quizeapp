@@ -7,9 +7,10 @@ import {incrementCounter} from '../../redux/actions/counterAction';
 const HomeScreen = () => {
   // console.log(API_URL);
   const state = useSelector(state => state);
+
   return (
     <View>
-      <Button title="Set Questions" />
+      <Button title="Set Questions" onPress={new Error('from on press')} />
       <Button title="Answer them" />
       <Icon.Button
         name="facebook"

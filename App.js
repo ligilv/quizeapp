@@ -8,6 +8,8 @@
 
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
+import * as Sentry from '@sentry/react-native';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -25,6 +27,15 @@ import {persistor, store} from './src/redux/store';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 const App = () => {
+  Sentry.init({
+    // dsn: 'https://1f0c79aed28444919b84f1ccb5b29ff3@o1341612.ingest.sentry.io/6618061',
+    // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+    // We recommend adjusting this value in production.
+    tracesSampleRate: 1.0,
+  });
+
+  // Sentry.nativeCrash();
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

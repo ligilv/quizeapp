@@ -13,6 +13,7 @@ const FetchData = () => {
   const [final, setFinal] = useState([]);
   const [selectedName, setSelectedName] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+
   useEffect(() => {
     async function fetchData() {
       try {
